@@ -5,8 +5,18 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+html, body {
+    background-color: $white;
+    color: $gray-800;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    font-size: 1rem;
+}
+
 .navbar-laravel {
-    background-color: #fff;
+    background-color: $blue;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
@@ -30,7 +40,7 @@
 }
 
 .card .card-image .card-title {
-    color: black;
+    color: $black;
     font-weight: 400
 }
 
@@ -45,7 +55,7 @@
 .collection-item.avatar .title {
     font-size: 20px;
     font-weight: 500;
-    color: #ee6e73;
+    color: $purple;
     display: block;
     margin-bottom: 20px;
 
@@ -63,7 +73,7 @@
 .collection-item.avatar .title {
     font-size: 20px;
     font-weight: 500;
-    color: #ee6e73;
+    color: $purple;
     display: block;
     margin-bottom: 20px;
 
@@ -85,4 +95,40 @@
 
 .item-desc {
     align-self: center;
+}
+
+
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: left;
+}
+
+.nav-link > a {
+    color: $gray-200;
+    padding: 0 25px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
 }

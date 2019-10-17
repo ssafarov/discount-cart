@@ -26,4 +26,5 @@
 
 
     Route::get('products', 'ProductController@index');
-    Route::get('getcart', 'ShoppingCartController@getCart');
+
+    Route::post('checkcoupon', 'ShoppingCartController@CalculateDiscount');

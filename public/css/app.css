@@ -10644,8 +10644,19 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
+html,
+body {
   background-color: #fff;
+  color: #343a40;
+  font-family: "Nunito", sans-serif;
+  font-weight: 200;
+  height: 100vh;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.navbar-laravel {
+  background-color: #3490dc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
@@ -10669,7 +10680,7 @@ a.text-dark:focus {
 }
 
 .card .card-image .card-title {
-  color: black;
+  color: #000;
   font-weight: 400;
 }
 
@@ -10684,7 +10695,7 @@ a.text-dark:focus {
 .collection-item.avatar .title {
   font-size: 20px;
   font-weight: 500;
-  color: #ee6e73;
+  color: #9561e2;
   display: block;
   margin-bottom: 20px;
 }
@@ -10701,7 +10712,7 @@ a.text-dark:focus {
 .collection-item.avatar .title {
   font-size: 20px;
   font-weight: 500;
-  color: #ee6e73;
+  color: #9561e2;
   display: block;
   margin-bottom: 20px;
 }
@@ -10721,5 +10732,39 @@ a.text-dark:focus {
 
 .item-desc {
   align-self: center;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+.content {
+  text-align: left;
+}
+
+.nav-link > a {
+  color: #e9ecef;
+  padding: 0 25px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 

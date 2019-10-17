@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRulesTable extends Migration
+class CreateDiscountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateRulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rules', function (Blueprint $table) {
+        Schema::create('discounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('coupon_id')->nullable();
             $table->string('type');
-            $table->string('trigger');
-            $table->string('triggerCondition');
-            $table->string('triggerValue');
+            $table->string('condition');
+            $table->string('value');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +31,6 @@ class CreateRulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rules');
+        Schema::dropIfExists('coupon_discounts');
     }
 }

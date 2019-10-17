@@ -15,5 +15,4 @@ Route::get('/', function () {
     return view('cart');
 });
 
-
 Route::resource('coupons', 'CouponController');

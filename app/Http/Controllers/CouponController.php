@@ -4,6 +4,7 @@
 
     use App\Http\Requests\CouponRequest;
     use App\Models\Coupon;
+    use App\Models\Discount;
     use App\Models\Rule;
     use Illuminate\Support\Facades\DB;
     use Mockery\Exception;
@@ -26,11 +27,13 @@
         {
             $request->validate([
                 'title'=>'required',
-                'rules'=>'array'
+                'rules'=>'array',
+                'discount'=>'array'
             ]);
 
             $done = true;
             $rules = $request['rules'];
+            $discounts = $request['discount'];
 
             DB::beginTransaction();
             try {
@@ -43,6 +46,13 @@
                             $rule = Rule::Create($item);
                             $rule->coupon()->associate($coupon->id);
                             $done = $done && $rule->save();
+                        }
+                    }
+                    foreach ($discounts as $item) {
+                        if (!empty($item['value'])){
+                            $discount = Discount::Create($item);
+                            $discount->coupon()->associate($coupon->id);
+                            $done = $done && $discount->save();
                         }
                     }
                 }

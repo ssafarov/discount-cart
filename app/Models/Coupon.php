@@ -12,6 +12,7 @@ class Coupon extends Model
 
     protected $table = 'coupons';
 
+    protected $hidden = ['id'];
     protected $guarded = ['id'];
 
     protected $fillable = ['uuid', 'title'];
@@ -23,6 +24,15 @@ class Coupon extends Model
      */
     public function rules () {
         return $this->hasMany(Rule::class);
+    }
+
+    /**
+     * Each coupon can have several discounts
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function discounts () {
+        return $this->hasMany(Discount::class);
     }
 
 }

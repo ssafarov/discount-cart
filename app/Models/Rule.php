@@ -9,7 +9,8 @@
         //
         protected $table = 'rules';
 
-        protected $hidden = ['id'];
+        protected $hidden = ['id','coupon_id'];
+        protected $guarded = ['id'];
 
         protected $fillable = [
             'type', 'condition', 'trigger', 'triggerCondition', 'triggerValue', 'discount', 'discountValue'
