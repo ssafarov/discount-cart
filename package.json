@@ -10,15 +10,38 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "@babel/preset-react": "^7.0.0",
         "axios": "^0.19",
+        "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
+        "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
         "lodash": "^4.17.13",
+        "popper.js": "^1.12",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0"
+    },
+    "dependencies": {
+        "@babel/core": "^7.6.4",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-transform-runtime": "^7.6.2",
+        "@babel/preset-env": "^7.6.3",
+        "@babel/preset-react": "^7.6.3",
+        "babel-loader": "^8.0.2",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "material-ui": "^0.20.2",
+        "normalize.css": "^8.0.1",
+        "react-bootstrap": "^1.0.0-beta.14",
+        "react-image-zoom": "^0.7.0",
+        "react-open-iconic-svg": "^3.0.1",
+        "react-redux": "^7.1.1",
+        "react-router-dom": "^5.1.2",
+        "react-star-ratings": "^2.3.0",
+        "redux": "^4.0.4",
+        "redux-thunk": "^2.3.0",
+        "uuid": "^3.3.3"
     }
 }
