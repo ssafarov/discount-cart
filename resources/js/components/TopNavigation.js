@@ -8,13 +8,13 @@ const TopNavigation = () => {
                 <Link to="/" className="brand-logo">Mega Shopping</Link>
 
                 <ul className="right">
-                    <li><Link to="/">Discount constructor</Link></li>
+                    <li><a href={'/coupons'}>Coupon constructor (Laravel CRUD there)</a></li>
                     <li><Link to="/">Product List</Link></li>
                     <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
                 </ul>
             </div>
         </nav>
     )
-}
+};
 
 export default TopNavigation;

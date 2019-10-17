@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-
+import axiosInstance from "../api/axiosInstance";
 
 class Coupon extends Component {
 
@@ -8,7 +8,9 @@ class Coupon extends Component {
         super(props);
 
         this.state = {
-            coupon: ''
+            coupon: '',
+            message: '',
+            total: props.total
         };
 
         this.updateInput = this.updateInput.bind(this);
@@ -20,13 +22,32 @@ class Coupon extends Component {
     }
 
     handleCoupon = (e) => {
-        console.log('Your coupon value is: ' + this.state.coupon)
+        // Let request API for current coupon situation
+        const headers = {Accept: "application/json"};
+        const data = {
+            'total': this.props.total,
+            'amount': this.props.addedItems.length,
+            'coupon': this.state.coupon
+        };
 
-        // if (e.target.checked) {
-        //     this.props.addCoupon();
-        // } else {
-        //     this.props.substractCoupon();
-        // }
+        axiosInstance.post('api/checkcoupon', data, {headers: headers})
+            .then((response) => {
+                this.setState({coupon: '', total: response.data, message: 'Coupon ' + this.state.coupon + ' applied successfully!'});
+            })
+            .catch((error,response) => {
+                console.log (response);
+                this.setState({coupon: '', message: 'Error due to coupon validation'});
+            });
+    };
+
+    shouldComponentUpdate(nextProps, nextState){
+        return this.state.message !== nextState.message ||
+            this.state.total !== nextState.total;
+
+    };
+
+    componentWillUpdate(nextProps, nextState) {
+        this.render();
     };
 
     render() {
@@ -43,7 +64,8 @@ class Coupon extends Component {
                     </div>
                 </div>
                 <div className="total">
-                    <p><b>Total: ${this.props.total}</b></p>
+                    <p><b>Total: ${this.state.total}</b></p>
+                    <p><b>{this.state.message}</b></p>
                 </div>
                 <div className="checkout">
                     <button className="waves-effect waves-light btn">Checkout</button>
