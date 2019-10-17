@@ -13,7 +13,7 @@
         protected $guarded = ['id'];
 
         protected $fillable = [
-            'type', 'condition', 'trigger', 'triggerCondition', 'triggerValue', 'discount', 'discountValue'
+            'type', 'condition', 'trigger', 'triggerCondition', 'triggerValue'
         ];
 
         public function coupon() {

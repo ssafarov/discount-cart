@@ -11,6 +11,7 @@
                 <thead>
                     <tr>
                         <td>Title</td>
+                        <td style="width:70%";>Description</td>
                         <td colspan=2>Actions</td>
                     </tr>
                 </thead>
@@ -18,6 +19,7 @@
                 @foreach($coupons as $coupon)
                     <tr>
                         <td>{{$coupon->title}}</td>
+                        <td>{{$coupon->description}}</td>
                         <td>
                             <a href="{{ route('coupons.edit',$coupon->uuid)}}" class="btn btn-primary">Edit</a>
                         </td>

@@ -19,12 +19,16 @@
                 <form method="post" action="{{ route('coupons.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="title">Coupon title:</label>
+                        <label for="title"><h5>Coupon title:</h5></label>
                         <input type="text" class="form-control" name="title"/>
                     </div>
                     <div class="form-group">
-                        <h5>Coupon discount scheme</h5>
-                        <table>
+                        <label for="title"><h5>Coupon description:</h5></label>
+                        <textarea class="form-control" name="description" cols="20" rows="6"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <h5>Coupon discount scheme:</h5>
+                        <table style="width: 100%">
                             <thead>
                             <tr>
                                 <th>Discount type</th>
@@ -80,8 +84,8 @@
                         </table>
                     </div>
                     <div class="form-group">
-                        <h5>Coupon rules</h5>
-                        <table>
+                        <h5>Coupon rules:</h5>
+                        <table style="width: 100%">
                             <thead>
                             <tr>
                                 <th>Rule Type</th>
@@ -98,8 +102,8 @@
                                     </td>
                                     <td>
                                         <select type="text" class="form-control" name="rules[0][trigger]">
-                                            <option value="count">Items count</option>
-                                            <option value="summ">Cart total</option>
+                                            <option value="amount">Items count</option>
+                                            <option value="total">Cart total</option>
                                         </select>
                                     </td>
                                     <td>
@@ -122,8 +126,8 @@
                                     </td>
                                     <td>
                                         <select type="text" class="form-control" name="rules[1][trigger]">
-                                            <option value="count">Items count</option>
-                                            <option value="summ">Cart total</option>
+                                            <option value="amount">Items count</option>
+                                            <option value="total">Cart total</option>
                                         </select>
                                     </td>
                                     <td>
@@ -146,8 +150,8 @@
                                     </td>
                                     <td>
                                         <select type="text" class="form-control" name="rules[2][trigger]">
-                                            <option value="count">Items count</option>
-                                            <option value="summ">Cart total</option>
+                                            <option value="amount">Items count</option>
+                                            <option value="total">Cart total</option>
                                         </select>
                                     </td>
                                     <td>
@@ -170,8 +174,8 @@
                                     </td>
                                     <td>
                                         <select type="text" class="form-control" name="rules[3][trigger]">
-                                            <option value="count">Items count</option>
-                                            <option value="summ">Cart total</option>
+                                            <option value="amount">Items count</option>
+                                            <option value="total">Cart total</option>
                                         </select>
                                     </td>
                                     <td>
@@ -194,8 +198,8 @@
                                     </td>
                                     <td>
                                         <select type="text" class="form-control" name="rules[4][trigger]">
-                                            <option value="count">Items count</option>
-                                            <option value="summ">Cart total</option>
+                                            <option value="amount">Items count</option>
+                                            <option value="total">Cart total</option>
                                         </select>
                                     </td>
                                     <td>

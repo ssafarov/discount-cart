@@ -15,7 +15,7 @@ class Coupon extends Model
     protected $hidden = ['id'];
     protected $guarded = ['id'];
 
-    protected $fillable = ['uuid', 'title'];
+    protected $fillable = ['uuid', 'title', 'description'];
 
     /**
      * Each coupon can have several rules

@@ -19,7 +19,7 @@
         <a class="navbar-brand" href="/">Mega Shopping</a>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Coupon constructor</a>
+                <a class="nav-link" href="/coupons">Coupon constructor</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cart">Shop</a>
