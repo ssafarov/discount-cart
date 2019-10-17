@@ -10768,3 +10768,7 @@ body {
   text-transform: uppercase;
 }
 
+a:hover {
+  color: unset;
+}
+
