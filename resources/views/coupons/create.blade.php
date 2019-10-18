@@ -14,7 +14,7 @@
             <br/>
         @endif
         <div class="col-sm-8 offset-sm-2">
-            <h1 class="display-3">Add a coupon</h1>
+            <h2 class="display-3">Add a new coupon</h2>
             <div>
                 <form method="post" action="{{ route('coupons.store') }}">
                     @csrf
@@ -218,7 +218,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success">Add coupon</button>
-                    <a href="/coupons" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('coupons.index')}}" class="btn btn-secondary">Cancel</a>
 
                 </form>
             </div>

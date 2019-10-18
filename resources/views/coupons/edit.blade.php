@@ -14,7 +14,7 @@
             <br/>
         @endif
         <div class="col-sm-8 offset-sm-2">
-            <h1 class="display-3">Edit coupon: <b>{{$coupon->title}}</b></h1>
+            <h2 class="display-3">Edit coupon: <b>{{$coupon->title}}</b></h2>
             <div>
                 <form method="post" action="{{ route('coupons.store', $coupon->uuid) }}">
                     @csrf
@@ -48,8 +48,10 @@
                                         </option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="discount[0][value]"
-                                           value="{{$coupon->discounts[0]['value']}}"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="discount[0][value]"
+                                           value="{{$coupon->discounts[0]['value']}}"/>
+                                </td>
                                 <td>
                                     <input type="hidden" name="discount[0][condition]" value="basic">
                                     <span>Basic discount</span>
@@ -68,8 +70,10 @@
                                         </option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="discount[1][value]"
-                                           value="@if (isset($coupon->discounts[1]['value']) ) {{$coupon->discounts[1]['value']}}@endif"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="discount[1][value]"
+                                           value="@if (isset($coupon->discounts[1]['value']) ) {{$coupon->discounts[1]['value']}}@endif"/>
+                                </td>
                                 <td>
                                     <select class="form-control" name="discount[1][condition]">
                                         <option value="greater"
@@ -96,8 +100,10 @@
                                         </option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="discount[2][value]"
-                                           value="@if (isset($coupon->discounts[2]['value']) ) {{$coupon->discounts[2]['value']}}@endif"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="discount[2][value]"
+                                           value="@if (isset($coupon->discounts[2]['value']) ) {{$coupon->discounts[2]['value']}}@endif"/>
+                                </td>
                                 <td>
                                     <select class="form-control" name="discount[2][condition]">
                                         <option value="greater"
@@ -154,8 +160,10 @@
                                                 @if (isset($coupon->rules[0]['triggerCondition']) && $coupon->rules[0]['triggerCondition'] === 'lessEq') selected="selected" @endif>Less or equal than</option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="rules[0][triggerValue]"
-                                           value="@if (isset($coupon->rules[0]['triggerValue']) ) {{$coupon->rules[0]['triggerValue']}}@endif"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="rules[0][triggerValue]"
+                                           value="@if (isset($coupon->rules[0]['triggerValue']) ) {{$coupon->rules[0]['triggerValue']}}@endif"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -189,8 +197,10 @@
                                                 @if (isset($coupon->rules[1]['triggerCondition']) && $coupon->rules[1]['triggerCondition'] === 'lessEq') selected="selected" @endif>Less or equal than</option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="rules[1][triggerValue]"
-                                           value="@if (isset($coupon->rules[1]['triggerValue']) ) {{$coupon->rules[1]['triggerValue']}}@endif"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="rules[1][triggerValue]"
+                                           value="@if (isset($coupon->rules[1]['triggerValue']) ) {{$coupon->rules[1]['triggerValue']}}@endif"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -224,8 +234,10 @@
                                                 @if (isset($coupon->rules[2]['triggerCondition']) && $coupon->rules[2]['triggerCondition'] === 'lessEq') selected="selected" @endif>Less or equal than</option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="rules[2][triggerValue]"
-                                           value="@if (isset($coupon->rules[2]['triggerValue']) ) {{$coupon->rules[2]['triggerValue']}}@endif"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="rules[2][triggerValue]"
+                                           value="@if (isset($coupon->rules[2]['triggerValue']) ) {{$coupon->rules[2]['triggerValue']}}@endif"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -258,8 +270,10 @@
                                                 @if (isset($coupon->rules[3]['triggerCondition']) && $coupon->rules[3]['triggerCondition'] === 'lessEq') selected="selected" @endif>Less or equal than</option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="rules[3][triggerValue]"
-                                           value="@if (isset($coupon->rules[3]['triggerValue']) ) {{$coupon->rules[3]['triggerValue']}}@endif"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="rules[3][triggerValue]"
+                                           value="@if (isset($coupon->rules[3]['triggerValue']) ) {{$coupon->rules[3]['triggerValue']}}@endif"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -292,8 +306,10 @@
                                                 @if (isset($coupon->rules[4]['triggerCondition']) && $coupon->rules[4]['triggerCondition'] === 'lessEq') selected="selected" @endif>Less or equal than</option>
                                     </select>
                                 </td>
-                                <td><input type="text" class="form-control" name="rules[4][triggerValue]"
-                                           value="@if (isset($coupon->rules[4]['triggerValue']) ) {{$coupon->rules[4]['triggerValue']}}@endif"/></td>
+                                <td>
+                                    <input type="text" class="form-control" name="rules[4][triggerValue]"
+                                           value="@if (isset($coupon->rules[4]['triggerValue']) ) {{$coupon->rules[4]['triggerValue']}}@endif"/>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -302,7 +318,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success">Update coupon</button>
-                    <a href="/coupons" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('coupons.index')}}" class="btn btn-secondary">Cancel</a>
 
                 </form>
             </div>

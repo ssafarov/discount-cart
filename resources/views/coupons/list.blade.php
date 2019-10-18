@@ -3,17 +3,17 @@
 @section('main')
     <div class="row">
         <div class="col-sm-12">
-            <h1 class="display-3">Coupons</h1>
+            <h2 class="display-3">Coupons</h2>
             <div>
                 <a style="margin: 19px;" href="{{ route('coupons.create')}}" class="btn btn-primary">New coupon</a>
             </div>
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <td>Title</td>
-                        <td style="width:70%";>Description</td>
-                        <td colspan=2>Actions</td>
-                    </tr>
+                <tr>
+                    <td>Title</td>
+                    <td style="width:70%;">Description</td>
+                    <td colspan=2>Actions</td>
+                </tr>
                 </thead>
                 <tbody>
                 @foreach($coupons as $coupon)
@@ -34,6 +34,6 @@
                 @endforeach
                 </tbody>
             </table>
-            <div>
-            </div>
+        </div>
+    </div>
 @endsection
