@@ -14,6 +14,10 @@
             return property_exists($this, 'uuidName') ? $this->uuidName : 'uuid';
         }
 
+        public function getUuid()
+        {
+            return PackageUuid::uuid4()->toString();
+        }
 
         protected static function boot()
         {

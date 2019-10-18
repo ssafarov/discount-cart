@@ -19,7 +19,7 @@
                 <form method="post" action="{{ route('coupons.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="title"><h5>Coupon title:</h5></label>
+                        <label for="title"><h5>Coupon title<sup class="color-red">*</sup>:</h5></label>
                         <input type="text" class="form-control" name="title"/>
                     </div>
                     <div class="form-group">
@@ -27,7 +27,7 @@
                         <textarea class="form-control" name="description" cols="20" rows="6"></textarea>
                     </div>
                     <div class="form-group">
-                        <h5>Coupon discount scheme:</h5>
+                        <h5>Coupon discount scheme<sup class="color-red">*</sup>:</h5>
                         <table style="width: 100%">
                             <thead>
                             <tr>
@@ -82,9 +82,10 @@
                             </tr>
                             </tbody>
                         </table>
+                        <div class="alert alert-light"><span class="color-red">*</span> - Hint: At least on row should be filled. Only discounts with non zero amounts will be stored.</div>
                     </div>
                     <div class="form-group">
-                        <h5>Coupon rules:</h5>
+                        <h5>Coupon rules<sup class="color-red">*</sup>:</h5>
                         <table style="width: 100%">
                             <thead>
                             <tr>
@@ -215,6 +216,8 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="alert alert-light"><span class="color-red">*</span> - Hint: At least on row should be filled. Only rules with non zero trigger values be stored.</div>
+
                     </div>
 
                     <button type="submit" class="btn btn-success">Add coupon</button>

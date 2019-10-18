@@ -21,10 +21,10 @@
                         <td>{{$coupon->title}}</td>
                         <td>{{$coupon->description}}</td>
                         <td>
-                            <a href="{{ route('coupons.edit',$coupon->uuid)}}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('coupons.edit', [$coupon->uuid])}}" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
-                            <form action="{{ route('coupons.destroy', $coupon->uuid)}}" method="post">
+                            <form action="{{ route('coupons.destroy', [$coupon->uuid])}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit">Delete</button>

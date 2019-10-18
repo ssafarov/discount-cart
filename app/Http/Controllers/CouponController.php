@@ -7,6 +7,7 @@
     use App\Models\Discount;
     use App\Models\Rule;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Redirect;
     use Mockery\Exception;
 
     class CouponController extends Controller
@@ -26,12 +27,12 @@
         public function store(CouponRequest $request)
         {
             $request->validate([
-                'title'=>'required',
+                'title'=>'required|string|max:32',
                 'rules'=>'array',
                 'discount'=>'array'
             ]);
 
-            $done = true;
+            $done = false; $iDiscAdded = 0; $iRulesAdded = 0;
             $rules = $request['rules'];
             $discounts = $request['discount'];
 
@@ -45,20 +46,26 @@
                         if (!empty($item['triggerValue']) && !empty($item['discountValue'])){
                             $rule = Rule::Create($item);
                             $rule->coupon()->associate($coupon->id);
-                            $done = $done && $rule->save();
+                            if ($rule->save()) {
+                                $iRulesAdded++;
+                            }
                         }
                     }
                     foreach ($discounts as $item) {
                         if (!empty($item['value'])){
                             $discount = Discount::Create($item);
                             $discount->coupon()->associate($coupon->id);
-                            $done = $done && $discount->save();
+                            if ($discount->save()) {
+                                $iDiscAdded++;
+                            }
                         }
                     }
+                    $done = !empty($iRulesAdded) && !empty($iDiscAdded);
                 }
             } catch (Exception $e){
                 $done = false;
             }
+
 
             if ($done) {
                 DB::commit();
@@ -66,7 +73,7 @@
             }
 
             DB::rollback();
-            return redirect('coupons')->with('error', 'Coupon was not added!!!');
+            return Redirect::back()->withErrors(['Coupon was not added due to errors!!!']);
         }
 
         public function show($uuid)
@@ -86,6 +93,7 @@
         public function edit($uuid)
         {
             $coupon = Coupon::where('uuid', $uuid)->firstOrFail();
+
             return view('coupons.edit', compact('coupon'));
         }
 
@@ -95,14 +103,14 @@
             $coupon = Coupon::where('uuid', $uuid)->firstOrFail();
             $coupon->update($request->all());
 
-            return redirect('/coupons')->with('success', 'Coupon updated!');
+            return redirect('/coupons')->with('success', 'Coupon '.$coupon->title.' updated!');
         }
 
         public function destroy($uuid)
         {
-            $coupon = Coupon::where('uuid', $uuid);
+            $coupon = Coupon::where('uuid', $uuid)->firstOrFail();
             $coupon->delete();
-            return redirect('/coupons')->with('success', 'Coupon deleted!');
+            return redirect('/coupons')->with('success', 'Coupon '.$coupon->title.' deleted!');
         }
 
     }
