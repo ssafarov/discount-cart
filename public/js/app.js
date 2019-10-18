@@ -41557,8 +41557,6 @@ function (_Component) {
           message: 'Coupon ' + _this.state.coupon + ' applied successfully!'
         });
       })["catch"](function (error, response) {
-        console.log(error.response);
-
         _this.setState({
           coupon: '',
           message: error.response.data

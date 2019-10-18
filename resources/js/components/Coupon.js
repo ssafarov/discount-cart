@@ -36,7 +36,6 @@ class Coupon extends Component {
                 this.setState({coupon: '', total: response.data, message: 'Coupon ' + this.state.coupon + ' applied successfully!'});
             })
             .catch((error,response) => {
-                console.log (error.response);
                 this.setState({coupon: '', message: error.response.data});
             });
     };
