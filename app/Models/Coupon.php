@@ -35,4 +35,12 @@ class Coupon extends Model
         return $this->hasMany(Discount::class);
     }
 
+    /**
+     * Each coupon can be used in different carts, but only once in each cart
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function carts () {
+        return $this->hasMany(Cart::class);
+    }
 }

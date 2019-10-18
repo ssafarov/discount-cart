@@ -27,7 +27,8 @@ class Coupon extends Component {
         const data = {
             'total': this.props.total,
             'amount': this.props.addedItems.length,
-            'coupon': this.state.coupon
+            'coupon': this.state.coupon,
+            'cartid': '39e7062f-fa31-480a-aaf1-a534e2541381'
         };
 
         axiosInstance.post('api/checkcoupon', data, {headers: headers})
@@ -35,8 +36,8 @@ class Coupon extends Component {
                 this.setState({coupon: '', total: response.data, message: 'Coupon ' + this.state.coupon + ' applied successfully!'});
             })
             .catch((error,response) => {
-                console.log (response);
-                this.setState({coupon: '', message: 'Error due to coupon validation'});
+                console.log (error.response);
+                this.setState({coupon: '', message: error.response.data});
             });
     };
 

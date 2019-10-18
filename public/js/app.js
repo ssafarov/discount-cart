@@ -34275,7 +34275,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -41545,7 +41545,8 @@ function (_Component) {
       var data = {
         'total': _this.props.total,
         'amount': _this.props.addedItems.length,
-        'coupon': _this.state.coupon
+        'coupon': _this.state.coupon,
+        'cartid': '39e7062f-fa31-480a-aaf1-a534e2541381'
       };
       _api_axiosInstance__WEBPACK_IMPORTED_MODULE_2__["default"].post('api/checkcoupon', data, {
         headers: headers
@@ -41556,11 +41557,11 @@ function (_Component) {
           message: 'Coupon ' + _this.state.coupon + ' applied successfully!'
         });
       })["catch"](function (error, response) {
-        console.log(response);
+        console.log(error.response);
 
         _this.setState({
           coupon: '',
-          message: 'Error due to coupon validation'
+          message: error.response.data
         });
       });
     };

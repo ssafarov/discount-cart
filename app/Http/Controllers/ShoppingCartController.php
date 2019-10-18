@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\Discount;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -74,15 +75,27 @@ class ShoppingCartController extends Controller
         $cartAmount = $request['amount'];
         $cartTotal = $request['total'];
         $cartCoupon = $request['coupon'];
+        $cartUuid = $request['cartid'];
         $currentTotal = $cartTotal;
         $canBeApplied = [];
         $discounts = [];
         $discount = 0;
 
         try {
-            $coupon = Coupon::with(['rules','discounts'])->where('title', $cartCoupon)->firstOrFail();
+            $cart = Cart::with('coupon')->where('uuid', $cartUuid)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            return response(json_encode('Wrong request format, cart id is missing.'), 400);
+        }
+
+        try {
+            $coupon = Coupon::with(['rules', 'discounts'])->where('title', $cartCoupon)->firstOrFail();
         } catch (ModelNotFoundException $e) {
             return response(json_encode('Coupon not found'), 400);
+        }
+
+        // Step -1. Check if this coupon was already applied to this particular cart
+        if ($cart->coupon->uuid === $coupon->uuid ) {
+            return response(json_encode('Coupon was already applied to this cart.'), 400);
         }
 
         // Step 0. Basic checks
@@ -137,6 +150,8 @@ class ShoppingCartController extends Controller
                 }
             }
             $currentTotal = $cartTotal - $discount;
+            $coupon->cart()->associate($cart);
+            $cart->save();
             return response(json_encode($currentTotal), 200);
         }
 

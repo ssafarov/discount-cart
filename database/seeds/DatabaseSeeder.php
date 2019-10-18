@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DiscountsSeeder::class);
         $this->call(RulesSeeder::class);
 
+        //Default cart
+        $this->call(CartSeeder::class);
     }
 }
