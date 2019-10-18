@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //Product list. Not used in final
         $this->call(ProductsListSeeder::class);
+
+        //Coupons
+        $this->call(CouponSeeder::class);
+        $this->call(DiscountsSeeder::class);
+        $this->call(RulesSeeder::class);
+
     }
 }
