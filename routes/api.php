@@ -28,3 +28,4 @@
     Route::get('products', 'ProductController@index');
 
     Route::post('checkcoupon', 'ShoppingCartController@CalculateDiscount');
+    Route::post('removecoupon', 'ShoppingCartController@RemoveCoupon');

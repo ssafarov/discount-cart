@@ -15,7 +15,7 @@ class UpdateCartTable extends Migration
     {
         Schema::table('cart', function($table) {
             $table->dropColumn('product_id');
-            $table->uuid('uuid')->after('id');
+            $table->uuid('uuid')->unique()->after('id');
             $table->string('coupon_id')->nullable()->after('uuid');
         });
     }

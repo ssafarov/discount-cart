@@ -87,7 +87,7 @@ class ShoppingCartController extends Controller
         $discount = 0;
 
         try {
-            $cart = Cart::with('coupon')->where('uuid', $cartUuid)->firstOrFail();
+            $cart = Cart::where('uuid', $cartUuid)->firstOrFail();
         } catch (ModelNotFoundException $e) {
             return response(json_encode('Wrong request format, cart id is missing.'), 400);
         }
@@ -99,12 +99,12 @@ class ShoppingCartController extends Controller
         }
 
         // Step -1. Check if this coupon was already applied to this particular cart
-        if ($cart->coupon->uuid === $coupon->uuid ) {
+        if (!empty($cart->coupon->uuid) && $cart->coupon->uuid === $coupon->uuid ) {
             return response(json_encode('Coupon was already applied to this cart.'), 400);
         }
 
         if (!empty($cart->coupon->uuid)) {
-            return response(json_encode('DEBUG: This cart already has aplpied coupon. Please clear coupon_id field in the cart table to further testings.'), 400);
+            return response(json_encode('Cart already has an applied coupon. Please remove existing coupon first.'), 400);
         }
 
         // Step 0. Basic checks
@@ -160,14 +160,38 @@ class ShoppingCartController extends Controller
             }
             $currentTotal = $cartTotal - $discount;
             $cart->coupon()->associate($coupon);
+            $cart->originalTotal = $cartTotal;
+            $cart->reducedTotal = $currentTotal;
             $cart->save();
+
             return response(json_encode($currentTotal), 200);
         }
-
 
         return response(json_encode('Coupon not applicable'), 400);
 
     }
 
+    /**
+     * Main function to check&calculate cart total with given coupon.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function RemoveCoupon (Request $request)
+    {
+        $cartUuid = $request['cartid'];
 
+        try {
+            $cart = Cart::with('coupon')->where('uuid', $cartUuid)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            return response(json_encode('Wrong request format, cart id is missing.'), 400);
+        }
+
+        $cart->coupon_id = null;
+        $cart->reducedTotal = null;
+        $cart->save();
+
+        return response(json_encode($cart->originalTotal), 200);
+
+    }
 }
