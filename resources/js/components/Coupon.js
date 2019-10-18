@@ -40,6 +40,22 @@ class Coupon extends Component {
             });
     };
 
+    clearCoupon = (e) => {
+        // Let request API for current coupon situation
+        const headers = {Accept: "application/json"};
+        const data = {
+            'cartid': '39e7062f-fa31-480a-aaf1-a534e2541381'
+        };
+
+        axiosInstance.post('api/removecoupon', data, {headers: headers})
+            .then((response) => {
+                this.setState({coupon: '', total: response.data, message: 'Coupon was successfully removed from cart!'});
+            })
+            .catch((error,response) => {
+                this.setState({coupon: '', message: error.response.data});
+            });
+    };
+
     shouldComponentUpdate(nextProps, nextState){
         return this.state.message !== nextState.message ||
             this.state.total !== nextState.total;
@@ -60,7 +76,8 @@ class Coupon extends Component {
                             <span>Coupon:</span>
                             <input type="text" onChange={this.updateInput}/>
                         </label>
-                        <button className="btn btn-primary" onClick={this.handleCoupon}>Apply Coupon</button>
+                        <button className="btn btn-primary" onClick={this.handleCoupon}>Apply Coupon</button>&nbsp;
+                        <button className="btn btn-primary" onClick={this.clearCoupon}>Remove Coupon</button>
                     </div>
                 </div>
                 <div className="total">

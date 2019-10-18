@@ -12,7 +12,7 @@ class Cart extends Model
     protected $hidden = ['id'];
     protected $guarded = ['id'];
 
-    protected $fillable = ['uuid'];
+    protected $fillable = ['uuid', 'originalTotal', 'reducedTotal'];
 
     public function coupon(){
         return $this->belongsTo(Coupon::class);

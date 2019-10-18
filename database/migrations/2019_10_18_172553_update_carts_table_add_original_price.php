@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateCartTable extends Migration
+class UpdateCartsTableAddOriginalPrice extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class UpdateCartTable extends Migration
     public function up()
     {
         Schema::table('cart', function($table) {
-            $table->dropColumn('product_id');
-            $table->uuid('uuid')->unique()->after('id');
-            $table->string('coupon_id')->nullable()->after('uuid');
+            $table->string('originalTotal')->nullable()->after('coupon_id');
+            $table->string('reducedTotal')->nullable()->after('originalTotal');
         });
     }
 
@@ -28,8 +27,8 @@ class UpdateCartTable extends Migration
     public function down()
     {
         Schema::table('cart', function($table) {
-            $table->dropColumn('uuid');
-            $table->dropColumn('coupon_id');
+            $table->dropColumn('originalTotal');
+            $table->dropColumn('reducedTotal');
         });
     }
 }

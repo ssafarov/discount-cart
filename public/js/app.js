@@ -41564,6 +41564,30 @@ function (_Component) {
       });
     };
 
+    _this.clearCoupon = function (e) {
+      // Let request API for current coupon situation
+      var headers = {
+        Accept: "application/json"
+      };
+      var data = {
+        'cartid': '39e7062f-fa31-480a-aaf1-a534e2541381'
+      };
+      _api_axiosInstance__WEBPACK_IMPORTED_MODULE_2__["default"].post('api/removecoupon', data, {
+        headers: headers
+      }).then(function (response) {
+        _this.setState({
+          coupon: '',
+          total: response.data,
+          message: 'Coupon was successfully removed from cart!'
+        });
+      })["catch"](function (error, response) {
+        _this.setState({
+          coupon: '',
+          message: error.response.data
+        });
+      });
+    };
+
     _this.state = {
       coupon: '',
       message: '',
@@ -41606,7 +41630,10 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary",
         onClick: this.handleCoupon
-      }, "Apply Coupon"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Apply Coupon"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
+        onClick: this.clearCoupon
+      }, "Remove Coupon"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "total"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Total: $", this.state.total)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, this.state.message))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "checkout"
