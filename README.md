@@ -29,7 +29,7 @@ npm run dev prod
 if you want to have minified css and js files 
 
 * Create database
-* Rename **.env.sample** file into **.env** file and set the correct database name, database user and database user password  
+* Rename **.env.example** file into **.env** file and set the correct database name, database user and database user password  
 * Run the database migrations and seeds:
 ```bash
 php artisan migrate --seed
